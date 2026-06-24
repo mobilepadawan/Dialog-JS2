@@ -170,6 +170,7 @@
     font-weight: 500;        /* Medium */
     letter-spacing: 0.00714em; /* 0.1sp */
     text-transform: uppercase;
+    outline: none;
 
     /* M3 Text Button geometry */
     height: 40px;
@@ -213,6 +214,7 @@
     opacity: 0;
     transition: opacity 0.2s cubic-bezier(0.2, 0, 0, 1);
     pointer-events: none;
+    outline: none;
 }
 
 /* M3 Hover state: 8% opacity state layer */
@@ -227,7 +229,7 @@
 
 /* M3 Focused state: 12% opacity state layer + focus ring */
 .dialog2-btn:focus-visible {
-    outline: 3px solid #6750a4;
+    /* outline: 3px solid #6750a4; */
     outline-offset: 2px;
 }
 
