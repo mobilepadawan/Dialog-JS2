@@ -9,7 +9,6 @@
    ========================================================================== */
 
 .dialog2 {
-    /* Dimensions and positioning */
     user-select: none;
     outline: none;
     width: 90%;
@@ -19,48 +18,27 @@
     box-sizing: border-box;
     margin: auto;
 
-    /* M3 Surface Container High — provides tonal lift over surface */
-    background-color: #ece6f0;
+    background-color: #ece6f0;  /* md.sys.color.surface-container-high */
     border: none;
+    border-radius: 28px;         /* M3 Shape.ExtraLarge */
 
-    /* M3 Shape.ExtraLarge token — dialogs are 28dp rounded */
-    border-radius: 28px;
-
-    /*
-       M3 Elevation Level 3 shadow recipe:
-       key-shadow   0dp blur offset + 3dp spread
-       ambient-shadow 4dp blur offset + 8dp spread
-    */
     box-shadow:
         0px 1px 3px 0px rgba(0, 0, 0, 0.30),
-        0px 4px 8px 3px rgba(0, 0, 0, 0.15);
+        0px 4px 8px 3px rgba(0, 0, 0, 0.15); /* M3 Elevation Level 3 */
 
-    /* M3 Typography — Roboto is the reference typeface */
     font-family: 'Roboto', system-ui, sans-serif;
-
-    /* md.sys.color.on-surface */
-    color: #1c1b1f;
-
-    outline: none;
+    color: #1c1b1f;              /* md.sys.color.on-surface */
 }
 
 
 /* ==========================================================================
    Backdrop / Scrim
-   M3 spec: rgba scrim at 32% opacity. Blur is an optional platform extension.
    ========================================================================== */
 
 .dialog2::backdrop {
-    /* md.sys.color.scrim at 32% — the M3-specified opacity for modal scrims */
-    background-color: rgba(0, 0, 0, 0.32);
-
-    /*
-       M3 spec does not mandate blur; kept as a tasteful platform enhancement.
-       Remove both lines below to match the spec exactly.
-    */
+    background-color: rgba(0, 0, 0, 0.32);  /* M3 scrim at 32% */
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
-
     animation: dialog2-backdrop-fade 0.25s ease-out;
 }
 
@@ -72,14 +50,18 @@
 .dialog2-header {
     display: flex;
     align-items: center;
-    margin-left: 76px;   /* icon (48px) + icon-left (24px) + gap (4px) */
+    margin-left: 76px;
     margin-bottom: 16px;
+}
+
+.dialog2-header-prompt {
+    margin-left: 0;
 }
 
 
 /* ==========================================================================
    Icon
-   M3 spec: 24dp icon inside a 48dp container, vertically top-aligned
+   M3 spec: vertically top-aligned, on-surface-variant color
    ========================================================================== */
 
 .dialog2-icon {
@@ -93,9 +75,11 @@
     justify-content: center;
     user-select: none;
     height: 64px;
+    color: #49454f;              /* md.sys.color.on-surface-variant */
+}
 
-    /* M3 icon color inherits on-surface-variant for neutral icons */
-    color: #49454f;
+.dialog2-icon-none {
+    display: none;
 }
 
 
@@ -106,14 +90,11 @@
 
 .dialog2-title {
     font-family: 'Roboto', system-ui, sans-serif;
-
-    font-size: 1.5rem;    /* 24sp — Headline Small */
-    font-weight: 400;     /* Regular — M3 Headline style is NOT bold */
-    line-height: 2rem;    /* 32sp */
+    font-size: 1.5rem;           /* 24sp — Headline Small */
+    font-weight: 400;            /* Regular — M3 Headline is NOT bold */
+    line-height: 2rem;           /* 32sp */
     letter-spacing: 0em;
-
-    /* md.sys.color.on-surface */
-    color: #1c1b1f;
+    color: #1c1b1f;              /* md.sys.color.on-surface */
     margin: 0;
 }
 
@@ -128,82 +109,76 @@
     min-height: 36px;
 }
 
+.dialog2-content-prompt {
+    margin-left: 0;
+}
+
 
 /* ==========================================================================
    Supporting / Message Text
-   M3 Type Scale: Body Medium — 14sp / Regular / 20sp line-height / +0.25sp tracking
+   M3 Type Scale: Body Medium — 14sp / Regular / 20sp line-height / +0.25sp
    ========================================================================== */
 
 .dialog2-message {
-    font-size: 0.875rem;    /* 14sp */
+    font-size: 0.875rem;         /* 14sp */
     font-weight: 400;
-    line-height: 1.25rem;   /* 20sp */
-    letter-spacing: 0.016em; /* 0.25sp */
-
-    /* md.sys.color.on-surface-variant — secondary text */
-    color: #49454f;
+    line-height: 1.25rem;        /* 20sp */
+    letter-spacing: 0.016em;     /* 0.25sp */
+    color: #49454f;              /* md.sys.color.on-surface-variant */
     margin: 0;
 }
 
 
 /* ==========================================================================
    Actions Footer
-   M3 spec: right-aligned text buttons, 8dp gap, 24dp top separation
+   M3 spec: right-aligned text buttons · 8dp gap · 24dp top padding
    ========================================================================== */
 
 .dialog2-footer {
     display: flex;
     justify-content: flex-end;
-    gap: 8px;        /* M3 dialog actions gap */
+    gap: 8px;
     padding-top: 24px;
 }
 
 
 /* ==========================================================================
    Button Foundation
-   M3 spec: Text Button — Full shape (20dp radius) · Label Large · 40dp height
+   M3 spec: Text Button · Full shape (20dp) · Label Large · 40dp height
    ========================================================================== */
 
 .dialog2-btn {
     font-family: 'Roboto', system-ui, sans-serif;
-    font-size: 0.875rem;     /* 14sp — Label Large */
-    font-weight: 500;        /* Medium */
-    letter-spacing: 0.00714em; /* 0.1sp */
+    font-size: 0.875rem;         /* 14sp — Label Large */
+    font-weight: 500;            /* Medium */
+    letter-spacing: 0.00714em;   /* 0.1sp */
     text-transform: uppercase;
     outline: none;
 
-    /* M3 Text Button geometry */
     height: 40px;
     padding: 0 12px;
-    min-width: 48px;
-    border-radius: 20px;   /* Full shape — pill/stadium */
+    min-width: 99px;
+    border-radius: 20px;         /* Full shape — pill */
 
     border: none;
     cursor: pointer;
     box-sizing: border-box;
 
-    /* Flex centering for label */
     display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    /*
-       M3 State Layer:
-       A pseudo-element overlay carries hover/pressed/focused states
-       instead of changing the background-color directly.
-    */
+    /* M3 State Layer via ::before pseudo-element */
     position: relative;
     overflow: hidden;
     -webkit-tap-highlight-color: transparent;
 
-    /* Smooth state transitions using M3 Standard easing */
     transition: box-shadow 0.2s cubic-bezier(0.2, 0, 0, 1);
 }
 
 /*
-   State Layer pseudo-element
-   Uses currentColor so it inherits the button's text color automatically,
-   matching the M3 spec for state layer color = label color.
+   State Layer — color = currentColor, so each button variant
+   automatically tints its own state layer with its label color.
 */
 .dialog2-btn::before {
     content: '';
@@ -214,67 +189,163 @@
     opacity: 0;
     transition: opacity 0.2s cubic-bezier(0.2, 0, 0, 1);
     pointer-events: none;
-    outline: none;
 }
 
-/* M3 Hover state: 8% opacity state layer */
-.dialog2-btn:hover::before {
-    opacity: 0.08;
-}
-
-/* M3 Pressed state: 12% opacity state layer */
-.dialog2-btn:active::before {
-    opacity: 0.12;
-}
-
-/* M3 Focused state: 12% opacity state layer + focus ring */
-.dialog2-btn:focus-visible {
-    /* outline: 3px solid #6750a4; */
-    outline-offset: 2px;
-}
-
-.dialog2-btn:focus-visible::before {
-    opacity: 0.12;
-}
+.dialog2-btn:hover::before         { opacity: 0.08; }  /* M3 hover:   8% */
+.dialog2-btn:active::before        { opacity: 0.12; }  /* M3 pressed: 12% */
+.dialog2-btn:focus-visible::before { opacity: 0.12; }
 
 
 /* ==========================================================================
    Primary Button (OK / Confirm)
-   M3: Text Button with md.sys.color.primary label
+   md.sys.color.primary — #6750a4
    ========================================================================== */
 
 .dialog2-btn-primary {
-    background-color: transparent;  /* Text buttons have no container fill */
-    color: #6750a4;                 /* md.sys.color.primary */
+    background-color: transparent;
+    color: #6750a4;              /* md.sys.color.primary */
 }
 
-/*
-   Override: explicit hover/active resets to avoid conflicts.
-   State is handled entirely by the ::before layer above.
-*/
 .dialog2-btn-primary:hover {
     background-color: transparent;
     color: #6750a4;
     box-shadow: none;
-    transform: none;   /* M3 does NOT lift buttons on hover */
+    transform: none;
 }
 
+/* Pressed: fills with primary — tonal feedback above the state layer */
 .dialog2-btn-primary:active {
     background-color: #6750a4;
-    color: #ffff;
+    color: #ffffff;              /* md.sys.color.on-primary */
     box-shadow: none;
-    transform: none;   /* M3 does NOT push buttons on press */
+    transform: none;
 }
 
 .dialog2-btn-primary:focus-visible {
-    outline-color: #6750a4;
+    outline: 3px solid #6750a4;
+    outline-offset: 2px;
 }
 
 
 /* ==========================================================================
+   Secondary Button (Cancel)
+
+   M3 spec: dialogs use text buttons for all actions. The secondary button
+   uses md.sys.color.on-surface-variant (#49454f) instead of primary to
+   signal lower priority without changing shape or type scale.
+   The state layer inherits #49454f via currentColor — no extra rules needed.
+   ========================================================================== */
+
+.dialog2-btn-secondary {
+    background-color: transparent;
+    color: #49454f;              /* md.sys.color.on-surface-variant */
+}
+
+.dialog2-btn-secondary:hover {
+    background-color: transparent;
+    color: #49454f;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Pressed: mirrors the primary active pattern for system coherence */
+.dialog2-btn-secondary:active {
+    background-color: #49454f;
+    color: #ffffff;
+    box-shadow: none;
+    transform: none;
+}
+
+.dialog2-btn-secondary:focus-visible {
+    outline: 3px solid #49454f;
+    outline-offset: 2px;
+}
+
+
+/* ==========================================================================
+   Danger / Destructive Button
+
+   M3 error role: md.sys.color.error (#b3261e).
+   Use for irreversible actions: Delete, Remove, Reset, etc.
+   Same text-button pattern; the red label alone signals risk.
+
+   Usage:
+     <button class="dialog2-btn dialog2-btn-danger">Eliminar</button>
+   ========================================================================== */
+
+.dialog2-btn-danger {
+    background-color: transparent;
+    color: #b3261e;              /* md.sys.color.error */
+}
+
+.dialog2-btn-danger:hover {
+    background-color: transparent;
+    color: #b3261e;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Pressed: fills with error color — on-error (#ffffff) for contrast */
+.dialog2-btn-danger:active {
+    background-color: #b3261e;
+    color: #ffffff;              /* md.sys.color.on-error */
+    box-shadow: none;
+    transform: none;
+}
+
+.dialog2-btn-danger:focus-visible {
+    outline: 3px solid #b3261e;
+    outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Input Field (M3 Style)
+   Spec: Outlined Text Field
+   ========================================================================== */
+
+.dialog2-input {
+    width: 100%;
+    margin-top: 16px;
+    padding: 16px;
+    box-sizing: border-box;
+    
+    background-color: transparent;
+    border: .5px solid #79747e;   /* md.sys.color.outline */
+    border-radius: 4px;          /* M3 Input Shape */
+    
+    font-family: 'Roboto', system-ui, sans-serif;
+    font-size: 1rem;             /* 16sp */
+    color: #1c1b1f;              /* md.sys.color.on-surface */
+    
+    transition: border-color 0.2s, outline 0.2s;
+}
+
+.dialog2-input:hover {
+    border-color: #1c1b1f;       /* md.sys.color.on-surface */
+}
+
+.dialog2-input:focus {
+    outline: .5px solid #6750a4;  /* md.sys.color.primary */
+    border-color: #6750a4;
+}
+
+.dialog2-input::placeholder {
+    color: #49454f6c;              /* md.sys.color.on-surface-variant */
+    opacity: 1;
+}
+
+.dialog2-input::-webkit-search-cancel-button {
+    
+    height: 16px;
+    width: 16px;
+    padding: 4px;
+    border: 1px solid #6750a4;
+    border-radius: 50%;
+}
+
+/* ==========================================================================
    Entry Animation
-   M3 Motion: Emphasized Decelerate easing for dialog enter
-   cubic-bezier(0.05, 0.7, 0.1, 1.0) · duration 400ms
+   M3 Motion: Emphasized Decelerate · cubic-bezier(0.05, 0.7, 0.1, 1.0) · 400ms
    ========================================================================== */
 
 .dialog2[open] {
@@ -289,7 +360,7 @@
 @keyframes dialog2-slide-up {
     from {
         opacity: 0;
-        transform: scale(0.9) translateY(16px); /* slightly more travel for M3 feel */
+        transform: scale(0.9) translateY(16px);
     }
 
     to {
@@ -299,11 +370,6 @@
 }
 
 @keyframes dialog2-backdrop-fade {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }

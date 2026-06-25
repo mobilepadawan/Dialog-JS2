@@ -4,31 +4,23 @@
 
 /* Dialog Container - Translucent frosted card with explicit flex column layout */
 .dialog2 {
-    /* Dimensions and positioning */
     width: 340px;
-    /* Increased from 275px for a larger macOS presentation */
     max-width: 90%;
     padding: 24px 0 0 0 !important;
-    /* No horizontal/bottom padding for clean button hair-lines */
     margin: auto !important;
-    /* Centered in browser viewport */
     box-sizing: border-box !important;
     outline: none !important;
     border: 0.5px solid rgba(0, 0, 0, 0.15) !important;
     border-radius: 16px !important;
-    /* Slightly increased radius for a premium look */
 
-    /* Layout isolation to prevent overlapping elements */
     display: flex !important;
     flex-direction: column !important;
     align-items: stretch !important;
     position: relative !important;
 
-    /* Typography */
     font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Segoe UI", Roboto, Helvetica, Arial, sans-serif !important;
     text-align: center !important;
 
-    /* Frosted Glass Vibrancy Effect (Light Mode Default) */
     background-color: rgba(255, 255, 255, 0.90) !important;
     backdrop-filter: blur(30px) saturate(190%) !important;
     -webkit-backdrop-filter: blur(30px) saturate(190%) !important;
@@ -55,18 +47,15 @@
     justify-content: center !important;
     padding: 0 24px !important;
     margin-left: 0 !important;
-    /* Overrides default theme offset */
     margin-bottom: 8px !important;
     position: static !important;
     width: auto !important;
 }
 
-/* Centered Icon above Title (Static placement to prevent overlaps) */
+/* Centered Icon above Title */
 .dialog2-icon {
     position: static !important;
-    /* Overrides default absolute positioning */
     font-size: 3.5rem !important;
-    /* Larger emoji presentation */
     line-height: 1 !important;
     margin: 0 0 12px 0 !important;
     height: auto !important;
@@ -79,7 +68,6 @@
 /* Title styling (SF Pro Semibold) */
 .dialog2-title {
     font-size: 19px !important;
-    /* Increased from 17px */
     font-weight: 600 !important;
     line-height: 1.3 !important;
     letter-spacing: -0.4px !important;
@@ -92,16 +80,13 @@
     padding: 0 24px 24px 24px !important;
     margin: 0 !important;
     margin-left: 0 !important;
-    /* Overrides default theme offset */
     min-height: auto !important;
-    /* Resets default theme minimum height */
     display: block !important;
 }
 
-/* Message styling (SF Pro regular) */
+/* Message styling (SF Pro Regular) */
 .dialog2-message {
     font-size: 14px !important;
-    /* Increased from 13px */
     font-weight: 400 !important;
     line-height: 1.45 !important;
     letter-spacing: -0.15px !important;
@@ -109,7 +94,7 @@
     margin: 0 !important;
 }
 
-/* Footer layout for Apple hair-line button borders */
+/* Footer layout — hairline top border + flex row */
 .dialog2-footer {
     display: flex !important;
     width: 100% !important;
@@ -120,7 +105,8 @@
     background: transparent !important;
 }
 
-/* Button Styling resets */
+/* ─── Button Foundation ──────────────────────────────────────────────────── */
+
 .dialog2-btn {
     flex: 1 !important;
     background: none !important;
@@ -131,43 +117,129 @@
     line-height: 1.3 !important;
     letter-spacing: -0.4px !important;
     padding: 14px 16px !important;
-    /* Slightly increased padding */
     cursor: pointer !important;
     outline: none !important;
-    color: #007aff !important;
-    /* Apple System Blue */
+    color: #007aff !important;          /* Apple System Blue */
     text-align: center !important;
     box-sizing: border-box !important;
     transition: background-color 0.12s !important;
 }
 
-/* Primary Button weight */
-.dialog2-btn-primary {
-    font-weight: 600 !important;
-}
-
-/* Active Highlight Tap State */
-.dialog2-btn:active {
-    background-color: rgba(0, 0, 0, 0.05) !important;
-    color: #0056b3 !important;
-    /* Saturated active iOS blue */
-}
-
-/* Hairline divider between buttons */
+/* Hairline divider between adjacent buttons — works for 2-button confirm */
 .dialog2-btn + .dialog2-btn {
     border-left: 0.5px solid rgba(60, 60, 67, 0.29) !important;
 }
 
-/* Spring popup animation */
+/* Tap highlight */
+.dialog2-btn:active {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    color: #0056b3 !important;
+}
+
+/* ─── Primary Button (OK / Confirm) ─────────────────────────────────────── */
+/*
+   iOS convention: the primary action sits on the RIGHT and is the only
+   button with semibold weight. Color stays Apple Blue.
+*/
+
+.dialog2-btn-primary {
+    font-weight: 600 !important;        /* Semibold — primary hierarchy signal */
+}
+
+/* ─── Secondary Button (Cancel) ─────────────────────────────────────────── */
+/*
+   iOS convention: the cancel action sits on the LEFT with regular weight.
+   Same Apple Blue as the primary — hierarchy is carried by weight alone,
+   not by color. The hairline separator between buttons is already handled
+   by the .dialog2-btn + .dialog2-btn adjacent selector above.
+*/
+
+.dialog2-btn-secondary {
+    font-weight: 400 !important;        /* Regular — subordinate to primary */
+    color: #007aff !important;          /* Apple System Blue — same hue as primary */
+}
+
+.dialog2-btn-secondary:active {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    color: #0056b3 !important;          /* Same active state as base */
+}
+
+/* ─── Danger / Destructive Button ───────────────────────────────────────── */
+/*
+   iOS uses red for irreversible actions: Delete, Remove, Sign Out, etc.
+   Usage in JS:
+     okButtonText = 'Eliminar'
+     <button class="dialog2-btn dialog2-btn-danger">
+
+   Conventions from HIG (Human Interface Guidelines):
+   · Red (#ff3b30) for the destructive action
+   · Semibold weight — destructive actions are always bold in iOS
+   · Cancel remains Apple Blue on the left (dialog2-btn-secondary)
+*/
+
+.dialog2-btn-danger {
+    color: #ff3b30 !important;          /* Apple Red — destructive */
+    font-weight: 600 !important;        /* Semibold — matches iOS HIG */
+}
+
+.dialog2-btn-danger:active {
+    background-color: rgba(0, 0, 0, 0.05) !important;
+    color: #c9000a !important;          /* Deeper red on tap */
+}
+
+/* ==========================================================================
+   Input Field (Apple/iOS Style)
+   ========================================================================== */
+
+.dialog2-input {
+    width: 100%;
+    margin-top: 16px;
+    padding: 10px 12px;
+    box-sizing: border-box;
+    
+    font-family: inherit;
+    font-size: 16px; /* iOS standard for inputs */
+    
+    background-color: #ffffff;
+    border: 0.5px solid rgba(60, 60, 67, 0.3);
+    border-radius: 6px;
+    color: #1c1c1e;
+    
+    outline: none;
+    appearance: none;
+}
+
+.dialog2-input:focus {
+    border-color: #007aff;
+    box-shadow: 0 0 0 1px #007aff;
+}
+
+/* Dark Mode Adaptation */
+@media (prefers-color-scheme: dark) {
+    .dialog2-input {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+    }
+
+    .dialog2-input:focus {
+        border-color: #0a84ff;
+        box-shadow: 0 0 0 1px #0a84ff;
+    }
+}
+
+/* ─── Spring popup animation ─────────────────────────────────────────────── */
+
 .dialog2[open] {
     animation: apple-spring-in 0.26s cubic-bezier(0.25, 0.8, 0.25, 1.15) !important;
 }
 
-/* System Dark Mode Integration */
+/* ─── System Dark Mode ───────────────────────────────────────────────────── */
+
 @media (prefers-color-scheme: dark) {
+
     .dialog2 {
         background-color: rgba(30, 30, 30, 0.88) !important;
-        /* Apple Dark Material */
         border: 0.5px solid rgba(255, 255, 255, 0.12) !important;
         box-shadow:
             0 1px 1px rgba(0, 0, 0, 0.15),
@@ -185,44 +257,50 @@
 
     .dialog2-footer {
         border-top-color: rgba(84, 84, 88, 0.65) !important;
-        /* Apple Dark Separator */
     }
 
     .dialog2-btn {
-        color: #0a84ff !important;
-        /* Apple System Blue for Dark Mode */
-    }
-
-    .dialog2-btn:active {
-        background-color: rgba(255, 255, 255, 0.08) !important;
-        color: #409cff !important;
-        /* Lighter active iOS blue for dark mode */
+        color: #0a84ff !important;      /* Apple System Blue — Dark */
     }
 
     .dialog2-btn + .dialog2-btn {
         border-left-color: rgba(84, 84, 88, 0.65) !important;
     }
+
+    .dialog2-btn:active {
+        background-color: rgba(255, 255, 255, 0.08) !important;
+        color: #409cff !important;
+    }
+
+    /* Secondary — Dark Mode */
+    .dialog2-btn-secondary {
+        color: #0a84ff !important;      /* Apple System Blue — Dark */
+    }
+
+    .dialog2-btn-secondary:active {
+        background-color: rgba(255, 255, 255, 0.08) !important;
+        color: #409cff !important;
+    }
+
+    /* Danger — Dark Mode */
+    .dialog2-btn-danger {
+        color: #ff453a !important;      /* Apple Red — Dark (#ff453a vs light #ff3b30) */
+    }
+
+    .dialog2-btn-danger:active {
+        background-color: rgba(255, 255, 255, 0.08) !important;
+        color: #ff6961 !important;      /* Lighter red on tap — Dark Mode */
+    }
 }
 
-/* Keyframe definitions */
-@keyframes apple-spring-in {
-    0% {
-        opacity: 0;
-        transform: scale(1.15);
-    }
+/* ─── Keyframes ──────────────────────────────────────────────────────────── */
 
-    100% {
-        opacity: 1;
-        transform: scale(1);
-    }
+@keyframes apple-spring-in {
+    0%   { opacity: 0; transform: scale(1.15); }
+    100% { opacity: 1; transform: scale(1);    }
 }
 
 @keyframes apple-backdrop-fade {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }

@@ -1,10 +1,20 @@
-import { Dialog2 } from "../../src/dialogJS2.js";
+import { Dialog2 } from "../../src/dialogJS2.0.js";
 
 document.querySelector('h1.header-title').addEventListener('click', () => {
-    Dialog2.Alert('Cuadro de Alerta', 'Este es un mensaje de prueba, sólo para ver qué tal luce el cuadro de alerta y el mensaje en la aplicación.', Dialog2.icon.INFO, "Aceptar")
+    Dialog2.Prompt('Dato a buscar', 'Ingresa por favor parte del nombre de producto a buscar:', 'producto a buscar', 'search', 'Buscar', 'Cancelar')
         .then((result) => {
             console.log(result)
         });
+
+    // Dialog2.Confirm('Título del diálogo', 'Este es un mensaje de prueba, sólo para ver qué tal luce el cuadro de alerta y el mensaje en la aplicación.', 'SUCCESS', "Aceptar", "Cancelar")
+    //         .then((result) => {
+    //             console.log(result)
+    // });
+
+    // Dialog2.Alert('Título del diálogo', 'Este es un mensaje de prueba, sólo para ver qué tal luce el cuadro de alerta y el mensaje en la aplicación.', 'SUCCESS', "Aceptar")
+    //     .then((result) => {
+    //         console.log(result)
+    //     });
 });
 
 // ==========================================================================
@@ -338,4 +348,4 @@ if (contactForm) {
 }
 
 // Initialize Playground Code display
-updatePlaygroundCode();
+// updatePlaygroundCode();
