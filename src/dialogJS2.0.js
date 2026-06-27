@@ -144,7 +144,7 @@ export class Dialog2 {
                 </div>
                 <div class="dialog2-content dialog2-content-prompt">
                     <p class="dialog2-message" style="margin-bottom: 16px;">${message || ''}</p>
-                    <input type="${inputType}" 
+                    <input type="${inputType || 'text'}" 
                            class="dialog2-input" 
                            placeholder="${placeholder}" 
                            style="width: 100%;"
@@ -160,6 +160,8 @@ export class Dialog2 {
             document.body.appendChild(dialogJS2);
             dialogJS2.showModal();
             const input = dialogJS2.querySelector('.dialog2-input');
+            const btnOk = document.querySelector('button.dialog2-btn.dialog2-btn-primary');
+            input.addEventListener('keypress', (e)=> e.key === 'Enter' && btnOk.click());
             input.focus();
             const closeDialog = (value) => {
                 resolve(value);
@@ -183,14 +185,14 @@ export class Dialog2 {
     /**
      * @param {string} message - Texto del mensaje.
      * @param {string} icon - Clave del ícono (SUCCESS, ERROR, etc.).
-     * @param {number} duration - Tiempo en milisegundos (default 3000).
-     * @param {string} position - 'top-left', 'top-center', 'top-right'.
+     * @param {number} duration (Optional) - Tiempo en milisegundos (default 3000).
+     * @param {string} position (Optional) - 'top-left', 'top-center', 'top-right' (default top-right).
      */
-    static Toast(message, icon = 'INFO', duration = 3000, position = 'top-right') {
-        let container = document.querySelector(`.dialog2-toast-container.${position}`);
+    static Toast(message, icon = 'INFO', duration, position = 'top-right') {
+        let container = document.querySelector(`.dialog2-toast-container.${position || 'top-center'}`);
         if (!container) {
             container = document.createElement('div');
-            container.className = `dialog2-toast-container ${position}`;
+            container.className = `dialog2-toast-container ${position || 'top-center'}`;
             document.body.appendChild(container);
         }
 
@@ -202,19 +204,15 @@ export class Dialog2 {
                 <p class="dialog2-toast-message">${message || ''}</p>
             </div>
             <div class="dialog2-toast-progress-bar">
-                <div class="dialog2-toast-progress-fill" style="animation-duration: ${duration}ms"></div>
+                <div class="dialog2-toast-progress-fill" style="animation-duration: ${duration || 3000}ms"></div>
             </div>
         `;
 
-        // appendChild: El viejo se queda arriba de todo, el nuevo se apila abajo
         container.appendChild(toast);
-
-        // Auto-eliminar tras la duración
         setTimeout(() => {
             toast.classList.add('fade-out');
             
             toast.addEventListener('transitionend', (e) => {
-                // Asegurar que responda al evento de opacidad o max-height y no de la barra de progreso
                 if (e.propertyName === 'max-height') {
                     toast.remove();
                     if (container.children.length === 0) {
@@ -222,7 +220,7 @@ export class Dialog2 {
                     }
                 }
             });
-        }, duration);
+        }, duration || 3000);
     };
 
     static About() {
@@ -230,4 +228,4 @@ export class Dialog2 {
         const aboutText = `<strong>2026 ${currentYear > 2026 ? currentYear : ''} - ${this.copyright}</strong>. All rights reserved. <strong>https://ferpro.online/</strong>. This is a library free to use in any project. If your software is a commercial or popular application, please mention me as the Author of this Dialog boxes library in its credits.`;
         this.Alert('Copyright', aboutText, 'SUCCESS');
     };
-}
+};

@@ -1,22 +1,22 @@
-import { Dialog2 } from "../../src/dialogJS2.0.min.js";
+// import { Dialog2 } from "../../src/dialogJS2.0.js";
 
 document.querySelector('h1.header-title').addEventListener('click', () => {
-    Dialog2.Prompt('Título', 'Ingresa el dato solicitado', 'Dato a buscar', 'search', 'Buscar', 'Cerrar')
-        .then((result) => {
-            console.log(result)
-    });
+    // Dialog2.Prompt('Título', 'Ingresa el dato solicitado', 'Dato a buscar', 'search', 'Buscar', 'Cerrar')
+    //     .then((result) => {
+    //         console.log(result)
+    // });
 
     // Dialog2.Confirm('Título del diálogo', 'Este es un mensaje de prueba, sólo para ver qué tal luce el cuadro Confirm.', 'INFO', "Aceptar", "Cancelar")
     //         .then((result) => {
     //             console.log(result)
     // });
 
-    // Dialog2.Alert('Título del diálogo', 'Este es un mensaje de prueba, sólo para ver qué tal luce el cuadro de alerta y el mensaje en la aplicación.', 'WARNING', "Aceptar")
-    //     .then((result) => {
-    //         console.log(result)
-    // });
+    Dialog2.Alert('Título del diálogo', 'Este es un mensaje de prueba, sólo para ver qué tal luce el cuadro de alerta y el mensaje en la aplicación.', 'WARNING', "Aceptar")
+        .then((result) => {
+            console.log(result)
+    });
 
-    // Dialog2.Toast('Esto es un mensaje Toast, simple.', 'INFO', 5500, 'top-center');
+    // Dialog2.Toast('Esto es un mensaje Toast, simple.', 'INFO', 5000, 'top-center');
 });
 
 const overlay = document.getElementById('dialog-overlay');
