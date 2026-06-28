@@ -1,6 +1,6 @@
-# Dialog2
+# DialogJS2.0
 
-A lightweight, modern, and dependency-free JavaScript library for creating asynchronous, accessible native modal dialogs and toasts. Powered by the native HTML5 `<dialog>` element and fully compatible with JS Modules (ESM).
+A lightweight, modern, and dependency-free JavaScript library for creating asynchronous, accessible native modal dialogs and toasts. Its weight is just `(8kb)`. Powered by the native HTML5 `<dialog>` element and fully compatible with JS Modules (ESM).
 
 ## Features
 
