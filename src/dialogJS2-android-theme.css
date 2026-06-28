@@ -6,15 +6,25 @@
     outline: none;
     max-width: 560px;
     user-select: none;
-    position: relative;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     box-sizing: border-box;
     background-color: #ece6f0;
-    border-radius: 28px;       
+    border-radius: 28px;
     box-shadow:
         0px 1px 3px 0px rgba(0, 0, 0, 0.30),
         0px 4px 8px 3px rgba(0, 0, 0, 0.15);
     font-family: 'Roboto', system-ui, sans-serif;
-    color: #1c1b1f;              
+    color: #1c1b1f;
+}
+
+.dialog2-lock-scroll {
+    overflow: hidden;
+    /* Opcional: evita pequeños saltos visuales si desaparece la barra de scroll de la derecha */
+    padding-right: var(--scrollbar-width, 0px);
 }
 
 .dialog2::backdrop {
@@ -56,10 +66,10 @@
 .dialog2-title {
     font-family: 'Roboto', system-ui, sans-serif;
     font-size: 1.5rem;
-    font-weight: 400; 
+    font-weight: 400;
     line-height: 2rem;
     letter-spacing: 0em;
-    color: #1c1b1f;   
+    color: #1c1b1f;
     margin: 0;
 }
 
@@ -76,10 +86,10 @@
 .dialog2-message {
     font-size: 0.875rem;
     font-weight: 400;
-    line-height: 1.5rem; 
+    line-height: 1.5rem;
     text-justify: distribute;
     letter-spacing: 0.016em;
-    color: #49454f;        
+    color: #49454f;
     margin: 0;
 }
 
@@ -93,7 +103,7 @@
 .dialog2-btn {
     font-family: 'Roboto', system-ui, sans-serif;
     font-size: 0.875rem;
-    font-weight: 500;   
+    font-weight: 500;
     letter-spacing: 0.00714em;
     text-transform: uppercase;
     outline: none;
@@ -124,9 +134,17 @@
     pointer-events: none;
 }
 
-.dialog2-btn:hover::before         { opacity: 0.08; }
-.dialog2-btn:active::before        { opacity: 0.12; }
-.dialog2-btn:focus-visible::before { opacity: 0.12; }
+.dialog2-btn:hover::before {
+    opacity: 0.08;
+}
+
+.dialog2-btn:active::before {
+    opacity: 0.12;
+}
+
+.dialog2-btn:focus-visible::before {
+    opacity: 0.12;
+}
 
 .dialog2-btn-primary {
     background-color: transparent;
@@ -207,15 +225,15 @@
     box-sizing: border-box;
     background-color: transparent;
     border: .5px solid #79747e;
-    border-radius: 4px;         
+    border-radius: 4px;
     font-family: 'Roboto', system-ui, sans-serif;
-    font-size: 1rem;            
-    color: #1c1b1f;            
+    font-size: 1rem;
+    color: #1c1b1f;
     transition: border-color 0.2s, outline 0.2s;
 }
 
 .dialog2-input:hover {
-    border-color: #1c1b1f;     
+    border-color: #1c1b1f;
 }
 
 .dialog2-input:focus {
@@ -253,8 +271,13 @@
 }
 
 @keyframes dialog2-backdrop-fade {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 .dialog2-toast-container {
@@ -262,14 +285,33 @@
     z-index: 9999;
     display: flex;
     flex-direction: column;
-    gap: 8px; /* Espaciado estándar de M3 entre toasts */
+    gap: 8px;
+    /* Espaciado estándar de M3 entre toasts */
     padding: 10px;
     pointer-events: none;
 }
 
-.dialog2-toast-container.top-right { top: 0; right: 0; width: 344px; align-items: flex-end; }
-.dialog2-toast-container.top-left  { top: 0; left: 0;  width: 344px; align-items: flex-start; }
-.dialog2-toast-container.top-center { top: 0; left: 50%; width: 344px; transform: translateX(-50%); align-items: center; }
+.dialog2-toast-container.top-right {
+    top: 0;
+    right: 0;
+    width: 344px;
+    align-items: flex-end;
+}
+
+.dialog2-toast-container.top-left {
+    top: 0;
+    left: 0;
+    width: 344px;
+    align-items: flex-start;
+}
+
+.dialog2-toast-container.top-center {
+    top: 0;
+    left: 50%;
+    width: 344px;
+    transform: translateX(-50%);
+    align-items: center;
+}
 
 .dialog2-toast {
     pointer-events: auto;
@@ -278,8 +320,8 @@
     color: #1c1b1f;
     border: none;
     border-radius: 2px;
-    box-shadow: 
-        0px 1px 3px 0px rgba(0, 0, 0, 0.30), 
+    box-shadow:
+        0px 1px 3px 0px rgba(0, 0, 0, 0.30),
         0px 4px 8px 3px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     font-family: 'Roboto', system-ui, sans-serif;
@@ -354,6 +396,7 @@
         opacity: 0;
         transform: scale(0.9) translateY(-12px);
     }
+
     to {
         opacity: 1;
         transform: scale(1) translateY(0);
@@ -361,8 +404,13 @@
 }
 
 @keyframes toast-progress {
-    from { width: 100%; }
-    to { width: 0%; }
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
 }
 
 /* OK ANIMATION */
@@ -717,10 +765,12 @@
         opacity: 1;
         r: 4;
     }
+
     60% {
         opacity: 0.5;
         r: 9;
     }
+
     100% {
         opacity: 0;
         r: 13;
@@ -816,10 +866,12 @@
         opacity: 1;
         r: 4;
     }
+
     60% {
         opacity: 0.5;
         r: 9;
     }
+
     100% {
         opacity: 0;
         r: 13;
@@ -832,15 +884,19 @@
     100% {
         transform: translateX(0);
     }
+
     20% {
         transform: translateX(-2px);
     }
+
     40% {
         transform: translateX(2px);
     }
+
     60% {
         transform: translateX(-1px);
     }
+
     80% {
         transform: translateX(1px);
     }

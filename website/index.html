@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialog-JS 2.0 — Modern Async Dialog Library for JavaScript</title>
+    <meta name="description"
+        content="Dialog-JS 2.0 is a lightweight, zero-dependency JavaScript library for beautiful async modal dialogs and toast notifications. Promise-based, accessible, and fully themeable. Simplify your webapp messages using this library instead of Sweet Alert 2 and Toastify-JS. All you need in one JS library.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="assets/images/bubble-chat-64.png" type="image/png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+    <link rel="stylesheet" href="../src/dialogJS2-default-theme.css" id="theme-stylesheet">
+    <script type="module">
+        import { Dialog2 } from '../src/dialogJS2.0.js';
+        window.Dialog2 = Dialog2;
+    </script>
+    <script type="module" src="assets/js/index.js"></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-brand">
+            <div class="header-logo-glow"></div>
+            <div class="header-text-zone">
+                <h1 class="header-title">Dialog-JS <span>2.0</span></h1>
+                <p class="header-quote-slogan">Elegant dialogs, zero complexity.</p>
+            </div>
+        </div>
+
+        <input type="checkbox" id="menu-toggle" class="menu-toggle-checkbox">
+        <label for="menu-toggle" class="menu-toggle-label">
+            <span></span>
+            <span></span>
+            <span></span>
+        </label>
+
+        <nav class="header-nav">
+            <a href="#why">Why Dialog-JS?</a>
+            <a href="#types">Types</a>
+            <a href="#implementation">Install</a>
+            <a href="#config">API Reference</a>
+            <a href="#styles">Themes</a>
+            <a href="#contact" class="nav-cta">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="section-hero">
+            <div class="hero-glow-1"></div>
+            <div class="hero-glow-2"></div>
+            <div class="hero-content">
+                <div class="badge">🚀 Version 2.0 is now available</div>
+                <h1 class="hero-title">Async JS Dialogs <br><span class="gradient-text">Built for the Modern Web</span>
+                </h1>
+                <p class="hero-subtitle">Replace the browser's boring, rigid native dialogs. Dialog-JS 2.0 delivers
+                    customizable modal windows — Promise-based, smoothly animated, and ready to use with multiple
+                    themes.</p>
+                <div class="hero-actions">
+                    <a href="#implementation" class="btn btn-primary">Get Started</a>
+                    <a href="#types" class="btn btn-secondary">Explore Types</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Section -->
+        <section id="why" class="section-intro">
+            <div class="section-tag">WHY DIALOG-JS?</div>
+            <h2>Another JS dialog? Why?</h2>
+            <p class="lead-text">Yes, another one — but designed to never get in your way.</p>
+            <p class="section-description">We know there are many options out there, but native browser functions like
+                <code>alert()</code>, <code>prompt()</code>, and <code>confirm()</code> can't be styled and don't
+                support clean async flows. Dialog-JS 2.0 lets you integrate beautiful, accessible dialogs with just a
+                single line of code.
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h4>Ultra Lightweight</h4>
+                    <p>Less than 2KB gzipped. Zero external dependencies to keep your page lightning-fast.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🤝</div>
+                    <h4>Promise-Based API</h4>
+                    <p>Full <code>async/await</code> support. Get user responses in a clean, readable way.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎨</div>
+                    <h4>Flexible Themes</h4>
+                    <p>Choose between Default, Dark, iOS, and Android themes — no extra CSS required.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">♿</div>
+                    <h4>Fully Accessible</h4>
+                    <p>Built on native <code>&lt;dialog&gt;</code> with focus trapping, ESC key support, and backdrop
+                        clicks.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔁</div>
+                    <h4>ES Module Ready</h4>
+                    <p>Works seamlessly with modern ES Modules. Import it directly — no build step needed.</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🍞</div>
+                    <h4>Toast Notifications</h4>
+                    <p>Non-blocking toasts with a visual progress bar, configurable position and duration.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Types Section -->
+        <section id="types" class="section-dialog-types">
+            <div class="section-tag">TYPES</div>
+            <h2>Dialog types for every use case</h2>
+            <p class="section-subtitle">Explore the interactive dialog types you can generate instantly in your project.
+            </p>
+
+            <div class="card-container">
+                <!-- Card 1: Alert -->
+                <div class="card">
+                    <div class="card-emoji-display">🙋🏻‍♂️</div>
+                    <h3>Alert</h3>
+                    <p>Replaces the native browser alert. Perfect for informing users of a completed action or important
+                        notice.</p>
+                    <button class="btn btn-demo-trigger" id="btn-demo-alert" data-dialog-type="alert">Try Alert</button>
+                </div>
+
+                <!-- Card 2: Prompt -->
+                <div class="card">
+                    <div class="card-emoji-display">✍️</div>
+                    <h3>Prompt</h3>
+                    <p>Requests user input with a styled input field. Supports any HTML input type — text, email,
+                        number, date, and more.</p>
+                    <button class="btn btn-demo-trigger" id="btn-demo-prompt" data-dialog-type="prompt">Try
+                        Prompt</button>
+                </div>
+
+                <!-- Card 3: Confirm -->
+                <div class="card">
+                    <div class="card-emoji-display">👍🏻</div>
+                    <h3>Confirm</h3>
+                    <p>Handles critical user decisions — accept or deny a destructive action before it runs.</p>
+                    <button class="btn btn-demo-trigger" id="btn-demo-confirm" data-dialog-type="confirm">Try
+                        Confirm</button>
+                </div>
+
+                <!-- Card 4: Toast -->
+                <div class="card">
+                    <div class="card-emoji-display">🍞</div>
+                    <h3>Toast</h3>
+                    <p>Non-blocking temporary notifications with a visual progress bar, stackable and fully
+                        configurable.</p>
+                    <button class="btn btn-demo-trigger" id="btn-demo-toast" data-dialog-type="toast">Try Toast</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Installation Section -->
+        <section id="implementation" class="section-how-to-implement">
+            <div class="section-tag">INSTALL</div>
+            <h2>Quick Installation</h2>
+            <p class="section-subtitle">Integrate Dialog-JS 2.0 into your project in under a minute.</p>
+
+            <div class="tabs-container">
+                <div class="tabs-header">
+                    <button class="tab-btn active" data-tab="esm">ES Modules (ESM)</button>
+                    <button class="tab-btn" data-tab="cdn">CDN / Script</button>
+                    <button class="tab-btn" data-tab="css">CSS Theme</button>
+                </div>
+                <div class="tabs-content">
+                    <!-- ESM Tab -->
+                    <div class="tab-pane active" id="tab-esm">
+                        <p>Install via NPM and import the module in your JavaScript file:</p>
+                        <div class="code-wrapper">
+                            <code class="code-block" id="code-esm-install">npm install dialog2</code>
+                            <button class="btn-copy-code" data-clipboard-target="code-esm-install">Copy</button>
+                        </div>
+                        <p style="margin-top: 1.25rem;">Then import it in your JS file:</p>
+                        <div class="code-wrapper">
+                            <code class="code-block"
+                                id="code-esm-import">import { Dialog2 } from './src/dialogJS2.0.js';</code>
+                            <button class="btn-copy-code" data-clipboard-target="code-esm-import">Copy</button>
+                        </div>
+                    </div>
+
+                    <!-- CDN Tab -->
+                    <div class="tab-pane" id="tab-cdn">
+                        <p>Use it directly in the browser via native script modules — no build step needed:</p>
+                        <div class="code-wrapper">
+                            <code class="code-block" id="code-cdn">&lt;script type="module"&gt;
+    import { Dialog2 } from './src/dialogJS2.0.js';
+    window.Dialog2 = Dialog2;
+&lt;/script&gt;</code>
+                            <button class="btn-copy-code" data-clipboard-target="code-cdn">Copy</button>
+                        </div>
+                        <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">Add this snippet in
+                            the <code>&lt;head&gt;</code> of your HTML. Exposing <code>window.Dialog2</code> makes it
+                            accessible globally from any script.</p>
+                    </div>
+
+                    <!-- CSS Tab -->
+                    <div class="tab-pane" id="tab-css">
+                        <p>Link a theme CSS file in the <code>&lt;head&gt;</code> of every HTML page that uses the
+                            library:</p>
+                        <div class="code-wrapper">
+                            <code class="code-block"
+                                id="code-css">&lt;link rel="stylesheet" href="./src/dialogJS2-default-theme.css"&gt;</code>
+                            <button class="btn-copy-code" data-clipboard-target="code-css">Copy</button>
+                        </div>
+                        <p style="margin-top: 1rem; font-size: 0.85rem; color: var(--text-muted);">Available CSS files:
+                            <code>dialogJS2-default-theme.css</code>, <code>dialogJS2-dark-theme.css</code>,
+                            <code>dialogJS2-ios-theme.css</code>, <code>dialogJS2-android-theme.css</code>. Choose one
+                            per document.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Config Options Section -->
+        <section id="config" class="section-params-config">
+            <div class="section-tag">API REFERENCE</div>
+            <h2>Configuration Parameters</h2>
+            <p class="section-subtitle">Each dialog method accepts positional parameters. Here's the full reference for
+                every type.</p>
+
+            <!-- Alert -->
+            <div class="api-method-block">
+                <div class="api-method-header">
+                    <span class="api-method-emoji">🙋🏻‍♂️</span>
+                    <div>
+                        <h3 class="api-method-title">Alert</h3>
+                        <code class="api-signature">Dialog2.Alert(title, message, icon, okButtonText)</code>
+                    </div>
+                </div>
+                <p class="api-method-desc">Displays an alert modal with an OK button. Returns a Promise that resolves to
+                    <code>true</code> when closed, or <code>null</code> if cancelled via ESC.</p>
+                <div class="config-table-wrapper">
+                    <table class="config-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Default</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>title</code></td>
+                                <td><code>string</code></td>
+                                <td><code>Required</code></td>
+                                <td>Title text of the dialog header.</td>
+                            </tr>
+                            <tr>
+                                <td><code>message</code></td>
+                                <td><code>string</code></td>
+                                <td><code>Required</code></td>
+                                <td>Body content or message displayed inside the dialog.</td>
+                            </tr>
+                            <tr>
+                                <td><code>icon</code></td>
+                                <td><code>string</code></td>
+                                <td><code>'INFO'</code></td>
+                                <td>Animated SVG icon type: <code>SUCCESS</code>, <code>ERROR</code>,
+                                    <code>WARNING</code>, <code>QUESTION</code>, <code>INFO</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><code>okButtonText</code></td>
+                                <td><code>string</code></td>
+                                <td><code>'Ok'</code></td>
+                                <td>Label for the confirmation button.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="api-example">
+                    <div class="code-wrapper">
+                        <code class="code-block"
+                            id="code-alert-ex">await Dialog2.Alert(
+        'System Updated', 
+        'All changes have been successfully saved.', 
+        'SUCCESS', 
+        'Got it!'
+);
+</code>
+                        <button class="btn-copy-code" data-clipboard-target="code-alert-ex">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Confirm -->
+            <div class="api-method-block">
+                <div class="api-method-header">
+                    <span class="api-method-emoji">👍🏻</span>
+                    <div>
+                        <h3 class="api-method-title">Confirm</h3>
+                        <code
+                            class="api-signature">Dialog2.Confirm(title, message, icon, okButtonText, cancelButtonText)</code>
+                    </div>
+                </div>
+                <p class="api-method-desc">Displays a confirmation dialog with two buttons. Returns <code>true</code> if
+                    confirmed, <code>false</code> if cancelled, or <code>null</code> on ESC / backdrop click.</p>
+                <div class="config-table-wrapper">
+                    <table class="config-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Default</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>title</code></td>
+                                <td><code>string</code></td>
+                                <td><code>Required</code></td>
+                                <td>Title text of the dialog.</td>
+                            </tr>
+                            <tr>
+                                <td><code>message</code></td>
+                                <td><code>string</code></td>
+                                <td><code>Required</code></td>
+                                <td>Question or statement to present to the user.</td>
+                            </tr>
+                            <tr>
+                                <td><code>icon</code></td>
+                                <td><code>string</code></td>
+                                <td><code>'QUESTION'</code></td>
+                                <td>Animated SVG icon: <code>SUCCESS</code>, <code>ERROR</code>, <code>WARNING</code>,
+                                    <code>QUESTION</code>, <code>INFO</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><code>okButtonText</code></td>
+                                <td><code>string</code></td>
+                                <td><code>'Confirm'</code></td>
+                                <td>Label for the positive action button.</td>
+                            </tr>
+                            <tr>
+                                <td><code>cancelButtonText</code></td>
+                                <td><code>string</code></td>
+                                <td><code>'Cancel'</code></td>
+                                <td>Label for the negative action button.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="api-example">
+                    <div class="code-wrapper">
+                        <code class="code-block" id="code-confirm-ex">const isDeleted = await Dialog2.Confirm(
+                            'Delete File', 
+                            'Are you sure you want to delete this report?', 
+                            'WARNING', 
+                            'Yes, delete', 
+                            'No, keep it'
+                        );
+
+if (isDeleted) {
+    // Proceed with deletion logic
+}
+</code>
+                        <button class="btn-copy-code" data-clipboard-target="code-confirm-ex">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Prompt -->
+            <div class="api-method-block">
+                <div class="api-method-header">
+                    <span class="api-method-emoji">✍️</span>
+                    <div>
+                        <h3 class="api-method-title">Prompt</h3>
+                        <code
+                            class="api-signature">Dialog2.Prompt(title, message, placeholder, inputType, okButtonText, cancelButtonText)</code>
+                    </div>
+                </div>
+                <p class="api-method-desc">Displays a dialog with a customizable input field. The <strong>input is fully
+                        customizable</strong> — you can pass any valid HTML <code>input type</code> (e.g.
+                    <code>text</code>, <code>email</code>, <code>password</code>, <code>number</code>,
+                    <code>date</code>, <code>color</code>, <code>range</code>, etc.) to match your data needs. Returns
+                    the entered value as a string, <code>null</code> if cancelled.</p>
+                <div class="config-table-wrapper">
+                    <table class="config-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Default</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>title</code></td>
+                                <td><code>string</code></td>
+                                <td><code>Required</code></td>
+                                <td>Title text of the prompt dialog.</td>
+                            </tr>
+                            <tr>
+                                <td><code>message</code></td>
+                                <td><code>string</code></td>
+                                <td><code>Required</code></td>
+                                <td>Descriptive text guiding the user's input.</td>
+                            </tr>
+                            <tr>
+                                <td><code>placeholder</code></td>
+                                <td><code>string</code></td>
+                                <td><code>''</code></td>
+                                <td>Placeholder text shown inside the input field.</td>
+                            </tr>
+                            <tr>
+                                <td><code>inputType</code></td>
+                                <td><code>string</code></td>
+                                <td><code>'text'</code></td>
+                                <td>Any valid HTML <code>input</code> type: <code>text</code>, <code>number</code>,
+                                    <code>password</code>, <code>email</code>, <code>date</code>, <code>color</code>,
+                                    <code>range</code>, and more.</td>
+                            </tr>
+                            <tr>
+                                <td><code>okButtonText</code></td>
+                                <td><code>string</code></td>
+                                <td><code>'Confirm'</code></td>
+                                <td>Label for the submission button.</td>
+                            </tr>
+                            <tr>
+                                <td><code>cancelButtonText</code></td>
+                                <td><code>string</code></td>
+                                <td><code>'Cancel'</code></td>
+                                <td>Label for the cancellation button.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="api-example">
+                    <div class="code-wrapper">
+                        <code class="code-block" id="code-prompt-ex">const userEmail = await Dialog2.Prompt(
+                            'Newsletter', 
+                            'Please enter your email:', 
+                            'example@mail.com', 
+                            'email'
+                        );
+
+if (userEmail) {
+    console.log(`Subscribed: ${userEmail}`);
+}</code>
+                        <button class="btn-copy-code" data-clipboard-target="code-prompt-ex">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toast -->
+            <div class="api-method-block">
+                <div class="api-method-header">
+                    <span class="api-method-emoji">🍞</span>
+                    <div>
+                        <h3 class="api-method-title">Toast</h3>
+                        <code class="api-signature">Dialog2.Toast(message, icon, duration, position)</code>
+                    </div>
+                </div>
+                <p class="api-method-desc">Fires a non-blocking, temporary notification on screen with a timed visual
+                    progress bar. Multiple toasts can stack without interrupting the user's workflow.</p>
+                <div class="config-table-wrapper">
+                    <table class="config-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>Type</th>
+                                <th>Default</th>
+                                <th>Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>message</code></td>
+                                <td><code>string</code></td>
+                                <td><code>Required</code></td>
+                                <td>The message text to display inside the toast.</td>
+                            </tr>
+                            <tr>
+                                <td><code>icon</code></td>
+                                <td><code>string</code></td>
+                                <td><code>'INFO'</code></td>
+                                <td>Icon type: <code>SUCCESS</code>, <code>ERROR</code>, <code>WARNING</code>,
+                                    <code>QUESTION</code>, <code>INFO</code>.</td>
+                            </tr>
+                            <tr>
+                                <td><code>duration</code></td>
+                                <td><code>number</code></td>
+                                <td><code>3000</code></td>
+                                <td>Auto-dismiss timer in milliseconds.</td>
+                            </tr>
+                            <tr>
+                                <td><code>position</code></td>
+                                <td><code>string</code></td>
+                                <td><code>'top-right'</code></td>
+                                <td>Toast placement on screen: <code>top-left</code>, <code>top-center</code>,
+                                    <code>top-right</code>.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="api-example">
+                    <div class="code-wrapper">
+                        <code class="code-block"
+                            id="code-toast-ex">Dialog2.Toast(
+        'Connection lost. Retrying...', 
+        'WARNING', 
+        5000, 
+        'top-center'
+);
+</code>
+                        <button class="btn-copy-code" data-clipboard-target="code-toast-ex">Copy</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Promise pattern -->
+            <div class="api-method-block api-promise-block">
+                <div class="api-method-header">
+                    <span class="api-method-emoji">🔁</span>
+                    <div>
+                        <h3 class="api-method-title">Promise-based pattern</h3>
+                        <code class="api-signature">.then() / async await</code>
+                    </div>
+                </div>
+                <p class="api-method-desc">Every dialog method (except <code>Toast</code>) returns a Promise resolving
+                    to <code>true</code> (OK pressed), <code>false</code> (Cancel pressed), or <code>null</code> (ESC
+                    key). You can use either <code>async/await</code> or <code>.then()</code>:</p>
+                <div class="api-example">
+                    <div class="code-wrapper">
+                        <code class="code-block" id="code-promise-ex">Dialog2.Confirm(
+        'Confirm deletion', 
+        'Can you confirm to delete this file?', 
+        'QUESTION', 
+        'Confirm', 
+        'Cancel'
+    )
+    .then((result) => {
+        if (result === true) {
+            // user confirmed code 
+        } else {
+            // user cancelled code 
+        }
+    });</code>
+                        <button class="btn-copy-code" data-clipboard-target="code-promise-ex">Copy</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Themes Section -->
+        <section id="styles" class="section-css-styles">
+            <div class="section-tag">THEMES</div>
+            <h2>Ready-to-Use Themes</h2>
+            <p class="section-subtitle">Dialog-JS 2.0 includes four meticulously designed CSS themes. Link the one that
+                fits your project in the <code>&lt;head&gt;</code> of your HTML.</p>
+
+            <div class="card-container">
+                <div class="theme-card active" data-theme-file="default" data-theme-name="default">
+                    <div class="theme-dot" style="background: linear-gradient(135deg, #6b7cff, #a78bfa);"></div>
+                    <h4>Default</h4>
+                    <p>Clean and neutral. A professional light-leaning style that works in any context.</p>
+                    <code class="theme-filename">dialogJS2-default-theme.css</code>
+                </div>
+                <div class="theme-card" data-theme-file="dark" data-theme-name="dark">
+                    <div class="theme-dot" style="background: linear-gradient(135deg, #1e1e2e, #6366f1);"></div>
+                    <h4>Dark</h4>
+                    <p>Deep dark background with vivid accent colors. Perfect for dark-mode interfaces.</p>
+                    <code class="theme-filename">dialogJS2-dark-theme.css</code>
+                </div>
+                <div class="theme-card" data-theme-file="ios" data-theme-name="ios">
+                    <div class="theme-dot" style="background: linear-gradient(135deg, #f0f0f5, #007aff);"></div>
+                    <h4>iOS</h4>
+                    <p>Inspired by Apple's Human Interface Guidelines — soft, rounded, and polished.</p>
+                    <code class="theme-filename">dialogJS2-ios-theme.css</code>
+                </div>
+                <div class="theme-card" data-theme-file="android" data-theme-name="android">
+                    <div class="theme-dot" style="background: linear-gradient(135deg, #e8f5e9, #4caf50);"></div>
+                    <h4>Android</h4>
+                    <p>Follows Material Design principles with clean lines and vibrant, familiar accents.</p>
+                    <code class="theme-filename">dialogJS2-android-theme.css</code>
+                </div>
+            </div>
+
+            <p class="themes-tip">💡 <strong>Tip:</strong> You can also use any theme CSS file as a starting point and
+                share it with an AI platform to generate your own custom design, keeping all the existing CSS class
+                names intact.</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-contact-us">
+            <div class="section-tag">CONTACT</div>
+            <h2>Questions or suggestions?</h2>
+            <p class="section-subtitle">Reach out to report bugs, request improvements, or propose new features for
+                Dialog-JS 2.0.</p>
+            <p class="privacy-note">Your email will not be used for commercial purposes or advertising.</p>
+
+            <div class="contact-card">
+                <form class="contact-form" id="contact-form" action="#">
+                    <div class="form-group">
+                        <label for="fullname">Full Name</label>
+                        <input type="text" id="fullname" placeholder="Enter your name..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailaddress">Email Address</label>
+                        <input type="email" id="emailaddress" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="comments">Message</label>
+                        <textarea id="comments" rows="4" placeholder="Write your message or suggestion here..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Dialog-JS 2.0 — Developed by <a href="https://ferpro.online" target="_blank"
+                rel="noopener noreferrer">Fernando Omar Luna</a>. Free for personal and open-source use.</p>
+    </footer>
+
+</body>
+
+</html>

@@ -6,7 +6,11 @@
     max-width: 520px;
     color: #f3f4f6;
     user-select: none;
-    position: relative;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     box-sizing: border-box;
     background-color: #121020;
     border: 1px solid rgba(99, 102, 241, 0.25);
@@ -15,6 +19,12 @@
         0 0 15px rgba(99, 102, 241, 0.1),
         0 24px 48px rgba(0, 0, 0, 0.4);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.dialog2-lock-scroll {
+    overflow: hidden;
+    /* Opcional: evita pequeños saltos visuales si desaparece la barra de scroll de la derecha */
+    padding-right: var(--scrollbar-width, 0px);
 }
 
 .dialog2::backdrop {
@@ -195,6 +205,7 @@
         opacity: 0;
         transform: scale(0.95) translateY(12px);
     }
+
     to {
         opacity: 1;
         transform: scale(1) translateY(0);
@@ -205,6 +216,7 @@
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -220,9 +232,27 @@
     pointer-events: none;
 }
 
-.dialog2-toast-container.top-right { top: 0; right: 0; width: 320px; align-items: flex-end; }
-.dialog2-toast-container.top-left  { top: 0; left: 0;  width: 320px; align-items: flex-start; }
-.dialog2-toast-container.top-center { top: 0; left: 50%; width: 320px; transform: translateX(-50%); align-items: center; }
+.dialog2-toast-container.top-right {
+    top: 0;
+    right: 0;
+    width: 320px;
+    align-items: flex-end;
+}
+
+.dialog2-toast-container.top-left {
+    top: 0;
+    left: 0;
+    width: 320px;
+    align-items: flex-start;
+}
+
+.dialog2-toast-container.top-center {
+    top: 0;
+    left: 50%;
+    width: 320px;
+    transform: translateX(-50%);
+    align-items: center;
+}
 
 .dialog2-toast {
     pointer-events: auto;
@@ -281,7 +311,8 @@
 .dialog2-toast-progress-fill {
     height: 100%;
     background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-    box-shadow: 0 0 8px rgba(168, 85, 247, 0.6); /* Leve resplandor de carga */
+    box-shadow: 0 0 8px rgba(168, 85, 247, 0.6);
+    /* Leve resplandor de carga */
     width: 100%;
     animation: toast-progress linear forwards;
 }
@@ -303,6 +334,7 @@
         opacity: 0;
         transform: scale(0.95) translateY(12px);
     }
+
     to {
         opacity: 1;
         transform: scale(1) translateY(0);
@@ -310,8 +342,13 @@
 }
 
 @keyframes toast-progress {
-    from { width: 100%; }
-    to { width: 0%; }
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
 }
 
 /* OK ANIMATION */
@@ -767,10 +804,12 @@
         opacity: 1;
         r: 4;
     }
+
     60% {
         opacity: 0.5;
         r: 9;
     }
+
     100% {
         opacity: 0;
         r: 13;
@@ -778,19 +817,24 @@
 }
 
 @keyframes w-shake {
+
     0%,
     100% {
         transform: translateX(0);
     }
+
     20% {
         transform: translateX(-2px);
     }
+
     40% {
         transform: translateX(2px);
     }
+
     60% {
         transform: translateX(-1px);
     }
+
     80% {
         transform: translateX(1px);
     }

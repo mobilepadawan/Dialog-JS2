@@ -41,10 +41,10 @@ export class Dialog2 {
     };
 
     /**
-     * @param {string} title - Título del cuadro de diálogo.
-     * @param {string} message - Texto del cuadro de diálogo.
-     * @param {string} icon - Ícono del cuadro de diálogo.
-     * @param {string} okButtonText - Texto del botón de confirmación.
+     * @param {string} title - Alert Dialog title.
+     * @param {string} message - Alert Dialog description text.
+     * @param {constant} icon - Alert Dialog icon.
+     * @param {string} okButtonText - Alert Dialog OK button text.
      */
     static async Alert(title, message, icon = 'INFO', okButtonText = 'Ok') {
         return new Promise((resolve) => {
@@ -72,22 +72,21 @@ export class Dialog2 {
             dialogJS2.querySelector('button.dialog2-btn.dialog2-btn-primary')
                 .addEventListener('click', () => {
                     closeDialog(true);
-            });
+                });
             dialogJS2.addEventListener('cancel', (e) => {
                 e.preventDefault();
                 closeDialog(null);
-            });            
+            });
         });
     };
 
     /**
-     * @param {string} title - Título del cuadro de diálogo.
-     * @param {string} message - Texto del cuadro de diálogo.
-     * @param {string} icon - Ícono del cuadro de diálogo.
-     * @param {string} okButtonText - Texto del botón de confirmación.
-     * @param {string} cancelButtonText - Texto del botón de cancelación.
+     * @param {string} title - Confirm Dialog title.
+     * @param {string} message - Confirm Dialog description text.
+     * @param {constant} icon - Confirm Dialog icon.
+     * @param {string} okButtonText - Confirm Dialog Confirm button text.
+     * @param {string} cancelButtonText - Confirm Dialog Cancel button text.
      */
-
     static async Confirm(title, message, icon = 'QUESTION', okButtonText = 'Confirm', cancelButtonText = 'Cancel') {
         return new Promise((resolve) => {
             const dialogJS2 = document.createElement('dialog');
@@ -127,12 +126,12 @@ export class Dialog2 {
     };
 
     /**
-     * @param {string} title - Título del Prompt.
-     * @param {string} message - Texto del Prompt.
-     * @param {string} placeholder - Mensaje interno de la caja de entrada.
-     * @param {string} inputType - Tipo de caja de entrada (para datos).
-     * @param {string} okButtonText - Texto del botón de confirmación.
-     * @param {string} cancelButtonText - Texto del botón de cancelación.
+     * @param {string} title - Prompt Dialog title.
+     * @param {string} message - Prompt Dialog descripction text.
+     * @param {string} placeholder - Input placeholder hint text.
+     * @param {variant} inputType - Custom content for the input 'Type' type.
+     * @param {string} okButtonText - Prompt Dialog 'Confirm' button text.
+     * @param {string} cancelButtonText - Prompt Dialog 'Cancel' button text.
      */
     static async Prompt(title, message, placeholder = '', inputType = 'text', okButtonText = 'Confirm', cancelButtonText = 'Cancel') {
         return new Promise((resolve) => {
@@ -161,8 +160,8 @@ export class Dialog2 {
             dialogJS2.showModal();
             const input = dialogJS2.querySelector('.dialog2-input');
             const btnOk = document.querySelector('button.dialog2-btn.dialog2-btn-primary');
-            input.addEventListener('keypress', (e)=> e.key === 'Enter' && btnOk.click());
-            input.focus();
+            input.addEventListener('keypress', (e) => e.key === 'Enter' && btnOk.click());
+            input.focus({ preventScroll: true });
             const closeDialog = (value) => {
                 resolve(value);
                 dialogJS2.close();
@@ -183,10 +182,10 @@ export class Dialog2 {
     };
 
     /**
-     * @param {string} message - Texto del mensaje.
-     * @param {string} icon - Clave del ícono (SUCCESS, ERROR, etc.).
-     * @param {number} duration (Optional) - Tiempo en milisegundos (default 3000).
-     * @param {string} position (Optional) - 'top-left', 'top-center', 'top-right' (default top-right).
+     * @param {string} message - Toast Dialog text message.
+     * @param {constant} icon - Toast Dialog icon.
+     * @param {number} duration (Optional) - Toast Dialog visible time - in milliseconds (default 3000).
+     * @param {string} position (Optional) - Toast Dialog on-screen location 'top-left', 'top-center', 'top-right' (default top-right).
      */
     static Toast(message, icon = 'INFO', duration, position = 'top-right') {
         let container = document.querySelector(`.dialog2-toast-container.${position || 'top-center'}`);
@@ -211,7 +210,7 @@ export class Dialog2 {
         container.appendChild(toast);
         setTimeout(() => {
             toast.classList.add('fade-out');
-            
+
             toast.addEventListener('transitionend', (e) => {
                 if (e.propertyName === 'max-height') {
                     toast.remove();
@@ -225,7 +224,7 @@ export class Dialog2 {
 
     static About() {
         const currentYear = `- ${new Date().getFullYear()}`;
-        const aboutText = `<strong>2026 ${currentYear > 2026 ? currentYear : ''} - ${this.copyright}</strong>. All rights reserved. <strong>https://ferpro.online/</strong>. This is a library free to use in any project. If your software is a commercial or popular application, please mention me as the Author of this Dialog boxes library in its credits.`;
+        const aboutText = `<strong>2026 ${currentYear > 2026 ? currentYear : ''} - ${this.copyright}</strong>. All rights reserved. <strong>https://ferpro.online/</strong>. This library is free to use in any project. If your software is a commercial or popular application, please credit me as the author of this dialog boxes library.`;
         this.Alert('Copyright', aboutText, 'SUCCESS');
     };
 };

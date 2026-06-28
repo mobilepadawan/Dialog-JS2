@@ -69,7 +69,12 @@ Displays an alert box with an 'Ok' button. Resolves to `true` when closed or `nu
 
 #### Example:
 ```javascript
-await Dialog2.Alert('System Updated', 'All changes have been successfully saved.', 'SUCCESS', 'Got it!');
+await Dialog2.Alert(
+                'System Updated', 
+                'All changes have been successfully saved.', 
+                'SUCCESS', 
+                'Got it!'
+);
 ```
 <br>
 
@@ -93,12 +98,12 @@ Displays a confirmation dialog box with two buttons. Resolves to `true` if the u
 #### Example:
 ```javascript
 const isDeleted = await Dialog2.Confirm(
-    'Delete File', 
-    'Are you sure you want to delete this report?', 
-    'WARNING', 
-    'Yes, delete', 
-    'No, keep it'
-);
+                            'Delete File', 
+                            'Are you sure you want to delete this report?', 
+                            'WARNING', 
+                            'Yes, delete', 
+                            'No, keep it'
+                        );
 
 if (isDeleted) {
     // Proceed with deletion logic
@@ -124,7 +129,12 @@ if (isDeleted) {
 
 #### Example:
 ```javascript
-const userEmail = await Dialog2.Prompt('Newsletter', 'Please enter your email:', 'example@mail.com', 'email');
+const userEmail = await Dialog2.Prompt(
+                            'Newsletter', 
+                            'Please enter your email:', 
+                            'example@mail.com', 
+                            'email'
+                        );
 
 if (userEmail) {
     console.log(`Subscribed email: ${userEmail}`);
@@ -150,7 +160,12 @@ Fires a non-blocking temporary notification stack on the screen with a timed vis
 
 #### Example:
 ```javascript
-Dialog2.Toast('Connection lost. Retrying...', 'WARNING', 5000, 'top-center');
+Dialog2.Toast(
+        'Connection lost. Retrying...', 
+        'WARNING', 
+        5000, 
+        'top-center'
+);
 ```
 <br>
 
@@ -172,7 +187,13 @@ Dialog2.About();
 If you prefer to implement a JS logic by using a `.then()` Promise control method after pressing Accept or Cancel in a Dialog2 method, check the folowwing sample code:
 
 ```javascript
-Dialog2.Confirm('Your dialog title', 'Can you confirm to Delete this file?', 'QUESTION', "Confirm", "Cancel")
+Dialog2.Confirm(
+            'Your dialog title', 
+            'Can you confirm to Delete this file?', 
+            'QUESTION', 
+            'Confirm', 
+            'Cancel'
+        )
         .then((result) => {
             if (result === true) {
                 // your logic here

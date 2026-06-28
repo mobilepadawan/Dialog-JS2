@@ -2,7 +2,11 @@
     width: 90%;
     max-width: 520px;
     padding: 24px;
-    position: relative;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     background-color: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.08);
     border-radius: 16px;
@@ -179,6 +183,7 @@
         opacity: 0;
         transform: scale(0.95) translateY(12px);
     }
+
     to {
         opacity: 1;
         transform: scale(1) translateY(0);
@@ -189,6 +194,7 @@
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -265,10 +271,12 @@
         opacity: 1;
         r: 4;
     }
+
     60% {
         opacity: 0.5;
         r: 9;
     }
+
     100% {
         opacity: 0;
         r: 13;
@@ -294,9 +302,24 @@
     display: none;
 }
 
-.dialog2-toast-container.top-right { top: 0; right: 0; align-items: flex-end; }
-.dialog2-toast-container.top-left { top: 0; left: 0; align-items: flex-start; }
-.dialog2-toast-container.top-center { top: 0; left: 50%; transform: translateX(-50%); align-items: center; }
+.dialog2-toast-container.top-right {
+    top: 0;
+    right: 0;
+    align-items: flex-end;
+}
+
+.dialog2-toast-container.top-left {
+    top: 0;
+    left: 0;
+    align-items: flex-start;
+}
+
+.dialog2-toast-container.top-center {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+}
 
 /* El Toast */
 .dialog2-toast {
@@ -349,15 +372,23 @@
 
 .dialog2-toast-progress-fill {
     height: 100%;
-    background: #4f46e5; /* Color primario */
+    background: #4f46e5;
+    /* Color primario */
     width: 100%;
     animation: toast-progress linear forwards;
 }
 
 /* Animaciones */
 @keyframes toast-slide-in {
-    from { opacity: 0; transform: translateY(-20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .dialog2-toast.fade-out {
@@ -366,19 +397,29 @@
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     margin-top: 0 !important;
-    margin-bottom: -12px !important; /* Compensa el gap del contenedor flex */
+    margin-bottom: -12px !important;
+    /* Compensa el gap del contenedor flex */
     border-top-width: 0 !important;
     border-bottom-width: 0 !important;
-    transform: translateX(40px); /* Efecto de desplazamiento hacia la derecha */
+    transform: translateX(40px);
+    /* Efecto de desplazamiento hacia la derecha */
 }
 
 @keyframes toast-fade-out {
-    to { opacity: 0; transform: translateX(20px); }
+    to {
+        opacity: 0;
+        transform: translateX(20px);
+    }
 }
 
 @keyframes toast-progress {
-    from { width: 100%; }
-    to { width: 0%; }
+    from {
+        width: 100%;
+    }
+
+    to {
+        width: 0%;
+    }
 }
 
 /* ERROR ANIMATION */
@@ -461,10 +502,12 @@
         opacity: 1;
         r: 4;
     }
+
     60% {
         opacity: 0.5;
         r: 9;
     }
+
     100% {
         opacity: 0;
         r: 13;
@@ -553,10 +596,12 @@
         opacity: 1;
         r: 4;
     }
+
     60% {
         opacity: 0.5;
         r: 9;
     }
+
     100% {
         opacity: 0;
         r: 13;
@@ -646,10 +691,12 @@
         opacity: 1;
         r: 4;
     }
+
     60% {
         opacity: 0.5;
         r: 9;
     }
+
     100% {
         opacity: 0;
         r: 13;
@@ -745,10 +792,12 @@
         opacity: 1;
         r: 4;
     }
+
     60% {
         opacity: 0.5;
         r: 9;
     }
+
     100% {
         opacity: 0;
         r: 13;
@@ -761,15 +810,19 @@
     100% {
         transform: translateX(0);
     }
+
     20% {
         transform: translateX(-2px);
     }
+
     40% {
         transform: translateX(2px);
     }
+
     60% {
         transform: translateX(-1px);
     }
+
     80% {
         transform: translateX(1px);
     }
