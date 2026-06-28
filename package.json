@@ -2,7 +2,7 @@
   "name": "dialog-js2.0",
   "version": "1.0.0",
   "description": "A lightweight, modern, and dependency-free JavaScript library for creating asynchronous, accessible native modal dialogs and toasts. Powered by the native HTML5 `<dialog>` element and fully compatible with JS Modules (ESM) and, of course, a simple option to implement it via a classic CDN way.",
-  "main": "./src/dialogJS2.0.min.js",
+  "main": "src/dialogJS2.0.min.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
