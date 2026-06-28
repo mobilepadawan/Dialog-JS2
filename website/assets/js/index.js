@@ -1,5 +1,3 @@
-import Dialog2 from 'dialog-js2.0';
-
 const demoTriggers = document.querySelectorAll('.btn-demo-trigger');
 demoTriggers.forEach(button => {
     button.addEventListener('click', async () => {
