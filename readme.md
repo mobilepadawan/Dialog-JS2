@@ -21,7 +21,7 @@ Install the package in your project:
 
 
 ```bash
-npm install dialog2
+npm i dialog-js2.0
 ```
 
 Import and use it in your JavaScript file:
