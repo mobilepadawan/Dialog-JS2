@@ -11,7 +11,7 @@
     "url": "git+https://github.com/mobilepadawan/Dialog-JS2.git"
   },
   "keywords": ["alert", "prompt", "confirm", "toast", "message", "messages", "dialog", "library", "Sweet Alert 2", "Toastify-JS", "DialogJS"],
-  "author": "",
+  "author": "Fernando Omar Luna",
   "license": "ISC",
   "type": "module",
   "bugs": {
