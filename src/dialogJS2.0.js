@@ -188,38 +188,41 @@ export class Dialog2 {
      * @param {string} position (Optional) - Toast Dialog on-screen location 'top-left', 'top-center', 'top-right' (default top-right).
      */
     static Toast(message, icon = 'INFO', duration, position = 'top-right') {
-        let container = document.querySelector(`.dialog2-toast-container.${position || 'top-center'}`);
-        if (!container) {
-            container = document.createElement('div');
-            container.className = `dialog2-toast-container ${position || 'top-center'}`;
-            document.body.appendChild(container);
-        }
-
-        const toast = document.createElement('div');
-        toast.className = 'dialog2-toast';
-        toast.innerHTML = `
-            <div class="dialog2-toast-body">
-                <div class="dialog2-toast-icon">${this.icon[icon] || this.icon.INFO}</div>
-                <p class="dialog2-toast-message">${message || ''}</p>
-            </div>
-            <div class="dialog2-toast-progress-bar">
-                <div class="dialog2-toast-progress-fill" style="animation-duration: ${duration || 3000}ms"></div>
-            </div>
-        `;
-
-        container.appendChild(toast);
-        setTimeout(() => {
-            toast.classList.add('fade-out');
-
-            toast.addEventListener('transitionend', (e) => {
-                if (e.propertyName === 'max-height') {
-                    toast.remove();
-                    if (container.children.length === 0) {
-                        container.remove();
+        return new Promise((resolve) => {
+            let container = document.querySelector(`.dialog2-toast-container.${position || 'top-center'}`);
+            if (!container) {
+                container = document.createElement('div');
+                container.className = `dialog2-toast-container ${position || 'top-center'}`;
+                document.body.appendChild(container);
+            }
+    
+            const toast = document.createElement('div');
+            toast.className = 'dialog2-toast';
+            toast.innerHTML = `
+                <div class="dialog2-toast-body">
+                    <div class="dialog2-toast-icon">${this.icon[icon] || this.icon.INFO}</div>
+                    <p class="dialog2-toast-message">${message || ''}</p>
+                </div>
+                <div class="dialog2-toast-progress-bar">
+                    <div class="dialog2-toast-progress-fill" style="animation-duration: ${duration || 3000}ms"></div>
+                </div>
+            `;
+    
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.add('fade-out');
+    
+                toast.addEventListener('transitionend', (e) => {
+                    if (e.propertyName === 'max-height') {
+                        toast.remove();
+                        if (container.children.length === 0) {
+                            container.remove();
+                        }
                     }
-                }
-            });
-        }, duration || 3000);
+                });
+                resolve();
+            }, duration || 3000);
+        })
     };
 
     static About() {

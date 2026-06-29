@@ -1,5 +1,11 @@
 # Dialog JS2.0
 
+```
+🔔 NOTE ABOUT BUGS 🐞
+
+We have become aware about the behavior of Toast() method called into of .then() method control process. We are implementing the solution in our library (Dev and Minified) but we will publish the official fixed version in NPM after several validation tests.
+```
+
 A lightweight, modern, and dependency-free JavaScript library for creating asynchronous, accessible native modal dialogs and toasts. Its weight is just `(8kb)`. Powered by the native HTML5 `<dialog>` element and fully compatible with JS Modules (ESM).
 
 ## Features
@@ -30,6 +36,8 @@ Import and use it in your JavaScript file:
 import { Dialog2 } from 'dialogJS2.0.js';
 ```
 
+---
+
 ### 2. Via CDN
 
 You can also use it directly in the browser via native script modules:
@@ -44,6 +52,8 @@ You can also use it directly in the browser via native script modules:
 
 Add this code in the `<head>` section in your HTML file(s) after download this library. `window.dialog2` expose the `DialogJS2` object in the window global object. This way able you to call the `Dialog2` object into your JS code.
 
+---
+
 ### 3. CSS styles
 ⚠️ Note: To make the modals look stunning, make sure to link or include the companion CSS file in your project to expose CSS classes for its `Dialog Library`. 
 
@@ -52,6 +62,18 @@ The default CSS file for this library is `dialogJS2-default-theme.css`. Referenc
 ```html
 <link rel="stylesheet" href="./assets/css/dialogJS2-default-theme.css">
 ```
+
+---
+
+
+#### Available Styles
+Check our offer about different pre-built CSS styles.
+* Apple mobile (_iOS - iPadOS_)
+* Android (_Material 3_)
+* Dark theme (_same as default but dark_)
+* Default theme (_of course the main or base option_)
+
+---
 
 ## API Reference
 
