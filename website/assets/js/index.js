@@ -121,12 +121,14 @@ themeCards.forEach(card => {
             android: 'Android Theme 🤖'
         };
 
-        Dialog2.Alert(
-            themeLabels[selectedName] || 'Theme Changed',
-            `You are now previewing the "${selectedName}" theme. All dialog examples on this page will use this style.`,
-            'SUCCESS',
-            'Looks great!'
-        );
+        setTimeout(() => {
+            Dialog2.Alert(
+                themeLabels[selectedName] || 'Theme Changed',
+                `You are now previewing the "${selectedName}" theme. All dialog examples on this page will use this style.`,
+                'SUCCESS',
+                'Looks great!'
+            );
+        }, 500);
     });
 });
 

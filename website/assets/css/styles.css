@@ -275,12 +275,19 @@ section h2 {
 }
 
 .section-subtitle,
-.lead-text {
+.lead-text,
+.buy-me-image {
     font-size: 1.15rem;
     color: var(--text-secondary);
     max-width: 700px;
     margin: 0 auto 3rem;
     text-align: center;
+}
+
+.buy-me-image {
+    display: block;       /* 1. Permite que los márgenes laterales automáticos funcionen */
+    margin: 0 auto 3rem;  /* 2. Aplica el mismo margen centrado que tus otros elementos */
+    width: 300px;
 }
 
 /* Buttons System */
